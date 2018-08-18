@@ -1,4 +1,4 @@
-// Parses the development applications at the South Australian City of Salisbury web site and
+// Parses the development applications at the South Australian The Barossa Council web site and
 // places them in a database.
 //
 // Michael Bone
@@ -118,7 +118,7 @@ async function main() {
     eventValidation = $("input[name='__EVENTVALIDATION']").val();
     viewState = $("input[name='__VIEWSTATE']").val();
 
-    // Retrieve the enquiry search page for "Development Applications"
+    // Retrieve the enquiry search page for "Development Applications".
 
     console.log("Retrieving the \"Development Applications\" search page.");
     body = await request({
@@ -138,7 +138,7 @@ async function main() {
     eventValidation = $("input[name='__EVENTVALIDATION']").val();
     viewState = $("input[name='__VIEWSTATE']").val();
 
-    // Switch to the date lodged tab.
+    // Switch to the "Date Lodged" tab.
 
     console.log("Switching to the \"Date Lodged\" tab.");
     body = await request({
@@ -157,7 +157,7 @@ async function main() {
     eventValidation = $("input[name='__EVENTVALIDATION']").val();
     viewState = $("input[name='__VIEWSTATE']").val();
 
-    // Search for development applications in a date range.
+    // Search for development applications in the last month.
 
     let dateFrom = moment().subtract(1, "months").format("DD/MM/YYYY");
     let dateTo = moment().format("DD/MM/YYYY");
