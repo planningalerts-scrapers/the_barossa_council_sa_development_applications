@@ -36,7 +36,7 @@ async function initializeDatabase() {
 
 async function insertRow(database, developmentApplication) {
     return new Promise((resolve, reject) => {
-        let sqlStatement = database.prepare("insert or ignore into [data] values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        let sqlStatement = database.prepare("insert or replace into [data] values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         sqlStatement.run([
             developmentApplication.applicationNumber,
             developmentApplication.address,
@@ -78,6 +78,20 @@ function parseToken(body: string): string {
         }
     }
     return null;
+}
+
+// Retrieves the development application details page and extracts the full address.
+
+async function retrieveFullAddress(fullAddressUrl: string, jar: request.RequestJar) {
+    let body = await request({
+        url: fullAddressUrl,
+        jar: jar,
+        method: "POST",
+        followAllRedirects: true
+    });
+    let $ = cheerio.load(body);
+    let address = $($("th:contains('Formatted Property Address')").parent().parent().find("td")[4]).text();  // the address is in the fifth column
+    return address.replace(/\s\s+/g, " ").trim();
 }
 
 // Parses the development applications.
@@ -159,7 +173,7 @@ async function main() {
 
     // Search for development applications in the last month.
 
-    let dateFrom = moment().subtract(1, "months").format("DD/MM/YYYY");
+    let dateFrom = moment().subtract(2, "months").format("DD/MM/YYYY");
     let dateTo = moment().format("DD/MM/YYYY");
 
     console.log(`Searching for applications in the date range ${dateFrom} to ${dateTo}.`);
@@ -199,19 +213,28 @@ async function main() {
             if (tableCells.length >= 4) {
                 let applicationNumber = $(tableCells[0]).text().trim()
                 let receivedDate = moment($(tableCells[1]).text().trim(), "D/MM/YYYY", true);  // allows the leading zero of the day to be omitted
-                let address = $(tableCells[2]).text().trim();
                 let description = $(tableCells[3]).text().trim();
 
-                if (/[0-9]+.*/.test(applicationNumber) && receivedDate.isValid() && address !== "") {
-                    await insertRow(database, {
-                        applicationNumber: applicationNumber,
-                        address: address,
-                        description: ((description === "") ? "No description provided" : description),
-                        informationUrl: DevelopmentApplicationsDefaultUrl,
-                        commentUrl: CommentUrl,
-                        scrapeDate: moment().format("YYYY-MM-DD"),
-                        receivedDate: receivedDate.isValid() ? receivedDate.format("YYYY-MM-DD") : ""
-                    });
+                if (/[0-9]+.*/.test(applicationNumber) && receivedDate.isValid()) {
+                    // Obtain the full address from the details page (because the address on the
+                    // results page does not include the suburb, state or post code).  This slows
+                    // down the retrieval of information signifcantly, but is necessary in order
+                    // to obtain a complete address.
+
+                    let fullAddressUrl = `${DevelopmentApplicationsBaseUrl}/GeneralEnquiry/${$(tableCells[0]).children("a").attr("href")}`;
+                    let address = await retrieveFullAddress(fullAddressUrl, jar);
+
+                    if (address !== undefined && address !== "") {
+                        await insertRow(database, {
+                            applicationNumber: applicationNumber,
+                            address: address,
+                            description: ((description === "") ? "No description provided" : description),
+                            informationUrl: DevelopmentApplicationsDefaultUrl,
+                            commentUrl: CommentUrl,
+                            scrapeDate: moment().format("YYYY-MM-DD"),
+                            receivedDate: receivedDate.isValid() ? receivedDate.format("YYYY-MM-DD") : ""
+                        });
+                    }
                 }
             }
         }
