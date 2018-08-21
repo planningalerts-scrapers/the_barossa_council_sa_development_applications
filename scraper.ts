@@ -218,7 +218,7 @@ async function main() {
                 if (/[0-9]+.*/.test(applicationNumber) && receivedDate.isValid()) {
                     // Obtain the full address from the details page (because the address on the
                     // results page does not include the suburb, state or post code).  This slows
-                    // down the retrieval of information signifcantly, but is necessary in order
+                    // down the retrieval of information significantly, but is necessary in order
                     // to obtain a complete address.
 
                     let fullAddressUrl = `${DevelopmentApplicationsBaseUrl}/GeneralEnquiry/${$(tableCells[0]).children("a").attr("href")}`;
