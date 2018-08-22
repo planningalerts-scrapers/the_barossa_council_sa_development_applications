@@ -36,7 +36,7 @@ async function initializeDatabase() {
 
 async function insertRow(database, developmentApplication) {
     return new Promise((resolve, reject) => {
-        let sqlStatement = database.prepare("insert or replace into [data] values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        let sqlStatement = database.prepare("insert or ignore into [data] values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         sqlStatement.run([
             developmentApplication.applicationNumber,
             developmentApplication.address,
@@ -173,7 +173,7 @@ async function main() {
 
     // Search for development applications in the last month.
 
-    let dateFrom = moment().subtract(2, "months").format("DD/MM/YYYY");
+    let dateFrom = moment().subtract(1, "months").format("DD/MM/YYYY");
     let dateTo = moment().format("DD/MM/YYYY");
 
     console.log(`Searching for applications in the date range ${dateFrom} to ${dateTo}.`);
