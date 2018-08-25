@@ -26,12 +26,8 @@ async function initializeDatabase() {
     return new Promise((resolve, reject) => {
         let database = new sqlite3.Database("data.sqlite");
         database.serialize(() => {
-            database.all("PRAGMA table_info('data')", (error, rows) => {
-                if (rows.some(row => row.name === "on_notice_from"))
-                    database.run("drop table [data]");  // ensure that the on_notice_from (and on_notice_to) columns are removed
-                database.run("create table if not exists [data] ([council_reference] text primary key, [address] text, [description] text, [info_url] text, [comment_url] text, [date_scraped] text, [date_received] text)");
-                resolve(database);
-            });
+            database.run("create table if not exists [data] ([council_reference] text primary key, [address] text, [description] text, [info_url] text, [comment_url] text, [date_scraped] text, [date_received] text)");
+            resolve(database);
         });
     });
 }
