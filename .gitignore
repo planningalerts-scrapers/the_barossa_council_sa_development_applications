@@ -9,3 +9,6 @@ package-lock.json
 .vscode/*
 !.vscode/launch.json
 !.vscode/tasks.json
+
+results_original.yml
+results_ruby.yml
