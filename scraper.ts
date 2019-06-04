@@ -15,6 +15,7 @@ sqlite3.verbose();
 
 const DevelopmentApplicationsBaseUrl = "https://epayments.barossa.sa.gov.au/ePathway/Production/Web";
 const DevelopmentApplicationsDefaultUrl = `${DevelopmentApplicationsBaseUrl}/default.aspx`;
+const DevelopmentApplicationsInformationUrl = `${DevelopmentApplicationsBaseUrl}/GeneralEnquiry/EnquiryLists.aspx?ModuleCode=LAP`
 const DevelopmentApplicationsEnquiryListsUrl = `${DevelopmentApplicationsBaseUrl}/GeneralEnquiry/EnquiryLists.aspx?ModuleCode=LAP`;
 const DevelopmentApplicationsEnquirySearchUrl = `${DevelopmentApplicationsBaseUrl}/GeneralEnquiry/EnquirySearch.aspx`;
 const DevelopmentApplicationsEnquirySummaryViewUrl = `${DevelopmentApplicationsBaseUrl}/GeneralEnquiry/EnquirySummaryView.aspx`;
@@ -222,7 +223,7 @@ async function main() {
                             applicationNumber: applicationNumber,
                             address: address,
                             description: ((description === "") ? "No description provided" : description),
-                            informationUrl: DevelopmentApplicationsDefaultUrl,
+                            informationUrl: DevelopmentApplicationsInformationUrl,
                             scrapeDate: moment().format("YYYY-MM-DD"),
                             receivedDate: receivedDate.isValid() ? receivedDate.format("YYYY-MM-DD") : ""
                         });
