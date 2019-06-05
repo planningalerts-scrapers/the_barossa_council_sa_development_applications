@@ -1,6 +1,6 @@
 ---
 - council_reference: '158'
-  address: Jacobs Creek Retreat, 200 Nitschke Road, KRONDORF  SA  5352
+  address: 200 Nitschke Road, KRONDORF  SA  5352
   description: Alterations to existing building - addition of fire resistant treatments
     to external openings of nominated fire threat refuge building
   info_url: https://epayments.barossa.sa.gov.au/ePathway/Production/Web/GeneralEnquiry/EnquiryLists.aspx?ModuleCode=LAP
@@ -22,7 +22,7 @@
   date_scraped: '2019-05-14'
   date_received: '2019-05-07'
 - council_reference: '260'
-  address: Manager's House, Allot 434 Murray Street, TANUNDA  SA  5352
+  address: Allot 434 Murray Street, TANUNDA  SA  5352
   description: Construction of an outbuilding - maintenance shed (measuring 15.2m
     x 9.1m x 3.6m wall height)
   info_url: https://epayments.barossa.sa.gov.au/ePathway/Production/Web/GeneralEnquiry/EnquiryLists.aspx?ModuleCode=LAP
@@ -35,7 +35,7 @@
   date_scraped: '2019-05-14'
   date_received: '2019-05-07'
 - council_reference: '263'
-  address: Quarry, Allot 3 Penrice Road, PENRICE  SA  5353
+  address: Allot 3 Penrice Road, PENRICE  SA  5353
   description: Construction of two x shelter canopies (Section 76 - Building Rules
     Consent Only)
   info_url: https://epayments.barossa.sa.gov.au/ePathway/Production/Web/GeneralEnquiry/EnquiryLists.aspx?ModuleCode=LAP
@@ -56,7 +56,7 @@
   date_scraped: '2019-05-14'
   date_received: '2019-05-08'
 - council_reference: '266'
-  address: Treasury Wines, 30 Tanunda Road, NURIOOTPA  SA  5355
+  address: 30 Tanunda Road, NURIOOTPA  SA  5355
   description: Increase the size of the licensed cellar door area from 444sqm to 502sqm
   info_url: https://epayments.barossa.sa.gov.au/ePathway/Production/Web/GeneralEnquiry/EnquiryLists.aspx?ModuleCode=LAP
   date_scraped: '2019-05-14'
@@ -168,7 +168,7 @@
   date_scraped: '2019-05-14'
   date_received: '2019-05-15'
 - council_reference: '284'
-  address: Nuriootpa CFS, 8 Old Kapunda Road, NURIOOTPA  SA  5355
+  address: 8 Old Kapunda Road, NURIOOTPA  SA  5355
   description: Extension to an existing building and associated signage
   info_url: https://epayments.barossa.sa.gov.au/ePathway/Production/Web/GeneralEnquiry/EnquiryLists.aspx?ModuleCode=LAP
   date_scraped: '2019-05-14'
@@ -352,7 +352,7 @@
   date_scraped: '2019-05-14'
   date_received: '2019-05-31'
 - council_reference: '311'
-  address: Luth Homes Aged Care Facility, Allot 772 Bridge Street, TANUNDA  SA  5352
+  address: Allot 772 Bridge Street, TANUNDA  SA  5352
   description: Alterations and Additions to an Existing Nursing Home; addition of
     one room with ensuite to the High Care Facility and Internal Alterations to Facilities
     at Trinity Court reducing sitting area and adding two units with ensuites and
@@ -423,7 +423,7 @@
   date_scraped: '2019-05-14'
   date_received: '2019-06-04'
 - council_reference: '451'
-  address: Part Power Station, 869 Stockwell Road, ANGASTON  SA  5353
+  address: 869 Stockwell Road, ANGASTON  SA  5353
   description: AMENDMENT to Attached Verandah (Canopy) in association with existing
     General Industry; Verandah (Canopy) size increase & Construction of shed (measuring
     7.0m x 6.0m x 3.6m wall height)
